@@ -1,0 +1,273 @@
+:root{
+  --bg:#05070d;
+  --panel:rgba(255,255,255,.08);
+  --panel-strong:rgba(255,255,255,.12);
+  --text:#f5f7fb;
+  --muted:rgba(245,247,251,.72);
+  --accent:#d8b4ff;
+  --accent-2:#8ee7ff;
+  --shadow:0 20px 80px rgba(0,0,0,.45);
+  --radius:24px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+.bg-image,.bg-overlay,.ambient,.particles{
+  position:fixed; inset:0; pointer-events:none;
+}
+.bg-image{
+  background-size:cover;
+  background-position:center 25%;
+  transform:scale(1.05);
+  filter:saturate(1.05) contrast(1.02);
+  z-index:-4;
+}
+.bg-overlay{
+  z-index:-3;
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,.12), transparent 35%),
+    linear-gradient(180deg, rgba(5,7,13,.25), rgba(5,7,13,.78) 60%, rgba(5,7,13,.96));
+  backdrop-filter: blur(6px);
+}
+.ambient{
+  z-index:-2;
+  background:radial-gradient(circle, rgba(216,180,255,.2), transparent 60%);
+  animation: drift 16s ease-in-out infinite;
+}
+.ambient-1{left:-10%; top:10%; width:40vw; height:40vw}
+.ambient-2{right:-8%; bottom:10%; width:36vw; height:36vw; animation-delay:-8s}
+
+@keyframes drift{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(2vw,-2vh,0) scale(1.08)}
+}
+
+.topbar{
+  position:fixed; top:0; left:0; right:0;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:18px 24px;
+  z-index:20;
+}
+.brand,.music-btn,.glass,.panel,.wishes-card,.gallery-item{
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.brand{
+  padding:10px 14px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+}
+.music-btn{
+  display:flex; align-items:center; gap:10px;
+  border:none; color:var(--text);
+  padding:12px 16px; border-radius:999px;
+  background:linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.08));
+  box-shadow:var(--shadow);
+  cursor:pointer;
+}
+
+.section{
+  min-height:100vh;
+  padding:120px 24px 80px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.glass,.panel,.wishes-card{
+  background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:var(--shadow);
+}
+.hero{
+  align-items:flex-start;
+}
+.hero-content{
+  max-width:780px;
+  padding:34px;
+  border-radius:var(--radius);
+}
+.eyebrow,.section-kicker{
+  color:var(--accent-2);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-size:.78rem;
+  margin-bottom:14px;
+}
+.hero-title{
+  font-size:clamp(3rem, 8vw, 6.5rem);
+  line-height:.95;
+  letter-spacing:-.04em;
+}
+.accent{
+  background:linear-gradient(90deg, #fff, var(--accent), var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero-subtitle{
+  margin-top:18px;
+  max-width:620px;
+  font-size:1.05rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+.hero-actions{
+  margin-top:28px;
+  display:flex; gap:14px; flex-wrap:wrap;
+}
+.btn{
+  text-decoration:none;
+  padding:14px 20px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.primary{
+  color:#091018;
+  background:linear-gradient(135deg, #fff, #d8b4ff);
+}
+.secondary{
+  color:var(--text);
+  background:rgba(255,255,255,.06);
+}
+.scroll-hint{
+  margin-top:24px;
+  color:rgba(255,255,255,.55);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:.75rem;
+}
+
+.section-header{
+  max-width:760px;
+  margin-bottom:28px;
+}
+.section-header h2{
+  font-size:clamp(2rem, 5vw, 3.4rem);
+  line-height:1.05;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:24px;
+  align-items:stretch;
+}
+.panel,.photo-card,.wishes-card,.gallery-item{
+  border-radius:var(--radius);
+}
+.panel{
+  padding:28px;
+}
+.panel h3,.wishes-card p{
+  line-height:1.8;
+  color:var(--muted);
+}
+.photo-card{
+  overflow:hidden;
+  min-height:360px;
+  box-shadow:var(--shadow);
+}
+.photo-card img,.gallery-item img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .6s ease, filter .6s ease;
+}
+.photo-card:hover img,.gallery-item:hover img{
+  transform:scale(1.06);
+  filter:saturate(1.08) contrast(1.03);
+}
+
+.wishes-card{
+  position:relative;
+  padding:34px;
+}
+.quote-mark{
+  font-size:4rem;
+  color:rgba(255,255,255,.22);
+  line-height:1;
+}
+.quote-mark.end{text-align:right}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:18px;
+}
+.gallery-item{
+  overflow:hidden;
+  min-height:240px;
+  position:relative;
+  border:1px solid rgba(255,255,255,.14);
+}
+.gallery-item::after{
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, transparent, rgba(0,0,0,.24));
+}
+
+.footer{
+  padding:18px 24px 32px;
+  text-align:center;
+  color:rgba(255,255,255,.62);
+}
+
+.particle{
+  position:absolute;
+  width:4px; height:4px;
+  border-radius:50%;
+  background:rgba(255,255,255,.75);
+  box-shadow:0 0 16px rgba(216,180,255,.9);
+  opacity:.7;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+}
+
+@media (max-width: 900px){
+  .about-grid,.gallery-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (max-width: 640px){
+  .topbar{padding:14px 16px}
+  .section{padding:104px 16px 70px}
+  .hero-content,.panel,.wishes-card{padding:22px}
+  .about-grid,.gallery-grid{grid-template-columns:1fr}
+  .photo-card,.gallery-item{min-height:260px}
+  .hero-actions{flex-direction:column; align-items:flex-start}
+  .btn{width:100%; text-align:center}
+}
+
+#typewriter {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: 24px;
+  text-align: center;
+  color: #ffd700;
+  line-height: 2;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  background: linear-gradient(45deg, #ff4d88, #ffd700);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.emoji {
+
+-webkit-text-fill-color: initial;
+background: none;
+
+
+}
